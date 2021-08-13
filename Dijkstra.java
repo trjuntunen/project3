@@ -12,6 +12,7 @@ class Dijkstra {
 
 	private HashMap<String, Integer> cityMap;
 	private final int NO_PARENT = -1;
+	private String lastPrintedCity = "";
 
 	public Dijkstra(HashMap<String, Integer> cityMap) {
 		this.cityMap = cityMap;
@@ -65,6 +66,7 @@ class Dijkstra {
 		}
 		if (shouldPrint) {
 			// Run the algorithm and print the results
+//			System.out.println(getCityById(source).toUpperCase() + " -> " + getCityById(dest).toUpperCase());
 			return printSolution(source, dest, shortestDistances, parents);
 		} else {
 			// Run the algorithm and don't print the results
@@ -105,7 +107,14 @@ class Dijkstra {
 			return;
 		}
 		printPath(parents[currentVertex], parents);
-		System.out.println("-> " + getCityById(currentVertex).toUpperCase());
+		if(!this.lastPrintedCity.equalsIgnoreCase(getCityById(currentVertex))) {
+			if(getCityById(currentVertex).toLowerCase().endsWith("station")) {
+				System.out.println("CORRECT");
+			}
+			System.out.println("-> " + getCityById(currentVertex).toUpperCase());
+			this.lastPrintedCity = getCityById(currentVertex);
+		}
+		
 	}
 
 }

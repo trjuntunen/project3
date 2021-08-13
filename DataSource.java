@@ -63,6 +63,7 @@ public class DataSource {
 				String city = values[1].trim().toLowerCase();
 				attractions.put(attraction, city);
 			}
+			System.out.println(attractions);
 			br.close();
 		} catch (Exception e) {
 			System.out.println("Error: At least one of data files given is in invalid path.");
