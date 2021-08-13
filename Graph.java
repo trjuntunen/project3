@@ -1,4 +1,7 @@
 
+/**
+ * Class representing a Graph data structure
+ */
 public class Graph {
 
 	private int[][] matrix;
@@ -25,14 +28,6 @@ public class Graph {
 			return true;
 		}
 		return false;
-	}
-
-	public Object getVertex(int vertex) {
-		return null;
-	}
-
-	public int[] incident(int vertex) {
-		return null;
 	}
 
 	public int[][] getMatrix() {

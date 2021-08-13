@@ -2,6 +2,14 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * 
+ * Program to find the fastest route between two cities (given by user input)
+ * while visiting landmarks along the way.
+ * 
+ * @author Teddy Juntunen
+ * 
+ */
 public class RoadTrip {
 
 	ArrayList<ArrayList<Integer>> routes;

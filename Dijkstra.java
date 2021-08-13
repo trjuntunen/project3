@@ -1,6 +1,13 @@
 import java.util.HashMap;
 import java.util.Map.Entry;
 
+/**
+ * 
+ * Class to help with our custom version of Dijkstra's algorithm.
+ * 
+ * @author Teddy Juntunen
+ *
+ */
 class Dijkstra {
 
 	private HashMap<String, Integer> cityMap;

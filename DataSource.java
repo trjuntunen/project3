@@ -3,6 +3,11 @@ import java.io.FileReader;
 import java.nio.file.Path;
 import java.util.HashMap;
 
+/**
+ * 
+ * Class to consolidate all of the data used throughout the program.
+ *
+ */
 public class DataSource {
 
 	private Graph graph;
