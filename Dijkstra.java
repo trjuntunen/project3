@@ -65,7 +65,6 @@ class Dijkstra {
 		}
 		if (shouldPrint) {
 			// Run the algorithm and print the results
-			System.out.println(getCityById(source).toUpperCase() + " -> " + getCityById(dest).toUpperCase());
 			return printSolution(source, dest, shortestDistances, parents);
 		} else {
 			// Run the algorithm and don't print the results
