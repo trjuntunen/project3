@@ -108,9 +108,6 @@ class Dijkstra {
 		}
 		printPath(parents[currentVertex], parents);
 		if(!this.lastPrintedCity.equalsIgnoreCase(getCityById(currentVertex))) {
-			if(getCityById(currentVertex).toLowerCase().endsWith("station")) {
-				System.out.println("CORRECT");
-			}
 			System.out.println("-> " + getCityById(currentVertex).toUpperCase());
 			this.lastPrintedCity = getCityById(currentVertex);
 		}
