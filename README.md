@@ -1,6 +1,2 @@
 # project3
-
-Classes:
-RoadTrip (main)
-DataSource
-Graph
+RoadTrip.java contains the main method
