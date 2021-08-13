@@ -16,9 +16,9 @@ public class RoadTrip {
 	}
 
 	public static void main(String[] args) {
-		
+
 		// Validate command line arguments
-		if(args.length != 2) {
+		if (args.length != 2) {
 			System.out.println("Please add the 2 data files as arguments.");
 			System.exit(1);
 		}
@@ -26,28 +26,27 @@ public class RoadTrip {
 		try {
 			// Make it so the attractions and roads csv have to be present
 			// but can be inputed in any order in args.
-			if(args[0].toLowerCase().endsWith("attractions.csv") &&
-				args[1].toLowerCase().endsWith("roads.csv")) {
-					trip = new RoadTrip(Path.of(args[1]), Path.of(args[0]));
-			} else if(args[0].toLowerCase().endsWith("roads.csv") &&
-					args[1].toLowerCase().endsWith("attractions.csv")) {
-						trip = new RoadTrip(Path.of(args[0]), Path.of(args[1]));
+			if (args[0].toLowerCase().endsWith("attractions.csv") && args[1].toLowerCase().endsWith("roads.csv")) {
+				trip = new RoadTrip(Path.of(args[1]), Path.of(args[0]));
+			} else if (args[0].toLowerCase().endsWith("roads.csv")
+					&& args[1].toLowerCase().endsWith("attractions.csv")) {
+				trip = new RoadTrip(Path.of(args[0]), Path.of(args[1]));
 			} else {
 				System.out.println("Error: Must pass either attractions.csv or roads.csv in any order.");
 				System.exit(1);
 			}
-		} catch(Exception e) {
+		} catch (Exception e) {
 			System.out.println("Error: At least one of the arguments is in invalid file path.");
 			System.exit(1);
 		}
-		
+
 		Scanner scanner = new Scanner(System.in);
 
 		// Enter program loop
 		while (true) {
 			// Get starting and ending cities
-			String start = trip.getCityFromUser(scanner);
-			String end = trip.getCityFromUser(scanner);
+			String start = trip.getCityFromUser(scanner, true);
+			String end = trip.getCityFromUser(scanner, false);
 
 			// Get attractions from user input
 			ArrayList<String> attractions = trip.getAttractionsFromUser(scanner);
@@ -63,10 +62,10 @@ public class RoadTrip {
 	/**
 	 * Get a valid city from the user input
 	 */
-	private String getCityFromUser(Scanner scanner) {
+	private String getCityFromUser(Scanner scanner, boolean isStartingCity) {
 		// Get starting city
-		String startPrompt = "Name of starting city (or EXIT to quit): ";
-		System.out.println(startPrompt);
+		String prompt = (isStartingCity) ? "Name of starting city (or EXIT to quit): " : "Name of ending city: ";
+		System.out.println(prompt);
 		String city = scanner.nextLine().trim().toLowerCase();
 
 		// Continuously loop until city is not blank or city invalid
@@ -77,7 +76,7 @@ public class RoadTrip {
 				System.exit(0);
 			}
 			System.out.println("Please enter a valid city and state code. (e.g. miami fl)");
-			System.out.println(startPrompt);
+			System.out.println(prompt);
 			city = scanner.nextLine();
 
 		}
