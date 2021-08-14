@@ -108,10 +108,23 @@ class Dijkstra {
 		printPath(parents[currentVertex], parents);
 		String city = getCityById(currentVertex);
 
-		if(!this.lastPrintedCity.equals(city)) {
+		if(!this.lastPrintedCity.equalsIgnoreCase(city)) {
 			System.out.println("-> " + city.toUpperCase());
+		} else {
+			System.out.println("ATTRACTION: [ " + getAttractionByCity(city).toUpperCase() + " ]");
 		}
 		this.lastPrintedCity = city;
+		
+	}
+	
+	private String getAttractionByCity(String city) {
+		for (String key : data.getAttractions().keySet()) {
+			String curr = data.getAttractions().get(key);
+			if (curr.equalsIgnoreCase(city)) {
+				return key;
+			}
+		}
+		return null;
 	}
 
 }

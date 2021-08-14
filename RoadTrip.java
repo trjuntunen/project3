@@ -20,7 +20,7 @@ public class RoadTrip {
 		this.routes = new ArrayList<>();
 		this.data = new DataSource(290, roadsData, attractionsData);
 		data.build();
-		this.dijkstra = new Dijkstra(data);
+		
 	}
 
 	public static void main(String[] args) {
@@ -52,6 +52,8 @@ public class RoadTrip {
 
 		// Enter program loop
 		while (true) {
+			trip.routes = new ArrayList<>();//delete?
+			trip.dijkstra = new Dijkstra(trip.data);
 			// Get starting and ending cities
 			String start = trip.getCityFromUser(scanner, true);
 			String end = trip.getCityFromUser(scanner, false);
