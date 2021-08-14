@@ -1,4 +1,3 @@
-import java.util.HashMap;
 import java.util.Map.Entry;
 
 /**
@@ -12,6 +11,7 @@ class Dijkstra {
 
 	private DataSource data;
 	private final int NO_PARENT = -1;
+	private String lastPrintedCity = "";
 
 	public Dijkstra(DataSource data) {
 		this.data = data;
@@ -108,18 +108,10 @@ class Dijkstra {
 		printPath(parents[currentVertex], parents);
 		String city = getCityById(currentVertex);
 
-		System.out.println("-> " + city.toUpperCase());
-
-	}
-
-	private String getAttractionByCity(String city) {
-		for (String key : data.getAttractions().keySet()) {
-			String curr = data.getAttractions().get(key);
-			if (curr.equalsIgnoreCase(city)) {
-				return key;
-			}
+		if(!this.lastPrintedCity.equals(city)) {
+			System.out.println("-> " + city.toUpperCase());
 		}
-		return null;
+		this.lastPrintedCity = city;
 	}
 
 }
