@@ -20,7 +20,7 @@ public class RoadTrip {
 		this.routes = new ArrayList<>();
 		this.data = new DataSource(290, roadsData, attractionsData);
 		data.build();
-		this.dijkstra = new Dijkstra(data.getCityMap());
+		this.dijkstra = new Dijkstra(data);
 	}
 
 	public static void main(String[] args) {

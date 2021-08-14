@@ -10,12 +10,12 @@ import java.util.Map.Entry;
  */
 class Dijkstra {
 
-	private HashMap<String, Integer> cityMap;
+	private DataSource data;
 	private final int NO_PARENT = -1;
 	private String lastPrintedCity = "";
 
-	public Dijkstra(HashMap<String, Integer> cityMap) {
-		this.cityMap = cityMap;
+	public Dijkstra(DataSource data) {
+		this.data = data;
 	}
 
 	/**
@@ -78,7 +78,7 @@ class Dijkstra {
 	 * Get a city name from the id
 	 */
 	private String getCityById(int id) {
-		for (Entry<String, Integer> entry : cityMap.entrySet()) {
+		for (Entry<String, Integer> entry : data.getCityMap().entrySet()) {
 			if (entry.getValue() == id) {
 				return entry.getKey();
 			}
@@ -107,11 +107,25 @@ class Dijkstra {
 			return;
 		}
 		printPath(parents[currentVertex], parents);
-		if(!this.lastPrintedCity.equalsIgnoreCase(getCityById(currentVertex))) {
-			System.out.println("-> " + getCityById(currentVertex).toUpperCase());
-			this.lastPrintedCity = getCityById(currentVertex);
+		String city = getCityById(currentVertex);
+
+		if (this.lastPrintedCity.equalsIgnoreCase(city)) {
+			System.out.println("ATTRACTION: [ " + getAttractionByCity(city).toUpperCase() + " ]");
 		}
-		
+		System.out.println("-> " + city.toUpperCase());
+
+		this.lastPrintedCity = getCityById(currentVertex).toLowerCase();
+
+	}
+
+	private String getAttractionByCity(String city) {
+		for (String key : data.getAttractions().keySet()) {
+			String curr = data.getAttractions().get(key);
+			if (curr.equalsIgnoreCase(city)) {
+				return key;
+			}
+		}
+		return null;
 	}
 
 }
