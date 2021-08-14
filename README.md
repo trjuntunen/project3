@@ -2,4 +2,4 @@
 # project3
 RoadTrip.java contains the main method
 
-Usage: java RoadTrip [data file 1] [data file 2]
+Usage: `java RoadTrip [data file 1] [data file 2]`
