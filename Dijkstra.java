@@ -12,7 +12,6 @@ class Dijkstra {
 
 	private DataSource data;
 	private final int NO_PARENT = -1;
-	private String lastPrintedCity = "";
 
 	public Dijkstra(DataSource data) {
 		this.data = data;
@@ -109,12 +108,7 @@ class Dijkstra {
 		printPath(parents[currentVertex], parents);
 		String city = getCityById(currentVertex);
 
-		if (this.lastPrintedCity.equalsIgnoreCase(city)) {
-			System.out.println("ATTRACTION: [ " + getAttractionByCity(city).toUpperCase() + " ]");
-		}
 		System.out.println("-> " + city.toUpperCase());
-
-		this.lastPrintedCity = getCityById(currentVertex).toLowerCase();
 
 	}
 
